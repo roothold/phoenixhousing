@@ -217,6 +217,7 @@ textarea { min-height: 150px; resize: vertical; }
 .checkbox { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; font-size: 0.92rem; color: var(--brown-2); }
 .checkbox input { margin-top: 5px; accent-color: var(--gold-deep); }
 .form-note { font-size: 0.85rem; color: var(--muted); margin-top: 14px; }
+.form-error { margin: 14px 0 0; color: #a4381f; font-weight: 600; font-size: 0.92rem; }
 .honey { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; }
 
 /* Footer */
@@ -262,6 +263,12 @@ textarea { min-height: 150px; resize: vertical; }
 /* Thank you */
 .thanks { min-height: 70vh; display: grid; place-items: center; text-align: center; padding: 80px 0; }
 .thanks img { width: 110px; margin: 0 auto 24px; }
+.thanks .tick { width: 72px; height: 72px; border-radius: 50%; background: var(--gold); display: grid; place-items: center; margin: 0 auto 26px; box-shadow: var(--shadow); }
+.thanks .tick svg { width: 34px; height: 34px; stroke: var(--brown); }
+.next-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 40px auto 36px; max-width: 900px; text-align: left; }
+.next-steps .card h3 { font-size: 1.3rem; margin-bottom: 6px; }
+.next-steps .card .n { font-family: var(--font-serif); font-size: 2rem; color: var(--gold-deep); line-height: 1; margin-bottom: 10px; }
+@media (max-width: 820px) { .next-steps { grid-template-columns: 1fr; } }
 
 /* Prose (privacy) */
 .prose { max-width: 780px; }
