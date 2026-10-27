@@ -1,4 +1,4 @@
-// Phoenix Housing Group — site scripts
+// Phoenix Housing Group site scripts
 (function () {
   // Mobile navigation
   var toggle = document.querySelector('.nav-toggle');
@@ -55,6 +55,18 @@
         });
     });
   });
+
+  // "Other" fields: reveal a text box when Other is chosen
+  document.querySelectorAll('input[type=checkbox][data-toggle]').forEach(function (cb) {
+    var target = document.getElementById(cb.getAttribute('data-toggle'));
+    if (!target) { return; }
+    cb.addEventListener('change', function () { target.hidden = !cb.checked; if (cb.checked) { target.focus(); } else { target.value = ''; } });
+  });
+  var ins = document.getElementById('in-insurance');
+  if (ins) {
+    var insOther = ins.parentNode.querySelector('.other-field');
+    ins.addEventListener('change', function () { var show = ins.value === 'Other insurance'; insOther.hidden = !show; if (!show) { insOther.value = ''; } });
+  }
 
   // Footer year
   var y = document.querySelector('[data-year]');

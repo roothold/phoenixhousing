@@ -1,4 +1,4 @@
-/* Phoenix Housing Group — site styles */
+/* Phoenix Housing Group : site styles */
 :root {
   --cream: #f6f1e9;
   --cream-2: #efe7db;
@@ -147,6 +147,8 @@ p { margin: 0 0 1.1em; }
 }
 .section.sand .photo-stack .photo-2 { border-color: var(--cream-2); }
 .check-list { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 12px; }
+.check-list + .btn, .check-list + .hero-actions, .check-list + p { margin-top: 28px; }
+p + .btn, ul + .btn { margin-top: 8px; }
 .check-list li { display: flex; gap: 12px; align-items: flex-start; }
 .check-list li::before {
   content: ""; flex: 0 0 22px; height: 22px; border-radius: 50%; margin-top: 3px;
@@ -158,7 +160,10 @@ p { margin: 0 0 1.1em; }
 .card {
   background: var(--white); border-radius: var(--radius); padding: 34px 30px;
   border: 1px solid rgba(59,42,22,.06); transition: transform .2s, box-shadow .2s;
+  display: flex; flex-direction: column;
 }
+.card > p:last-child { margin-top: 0; }
+.card.photo-card .body { display: flex; flex-direction: column; flex: 1; }
 .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 .card .icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(233,162,28,.16); display: grid; place-items: center; margin-bottom: 20px; }
 .card .icon svg { width: 26px; height: 26px; stroke: var(--gold-deep); }
@@ -173,7 +178,9 @@ p { margin: 0 0 1.1em; }
 .stage {
   background: var(--white); border-radius: var(--radius); padding: 28px 22px 26px;
   border: 1px solid rgba(59,42,22,.06); position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
 }
+.stage .meter { margin-top: auto; }
 .stage .num { font-family: var(--font-serif); font-size: 3.2rem; line-height: 1; color: var(--gold); font-weight: 600; }
 .stage h3 { font-size: 1.35rem; margin: 10px 0 8px; }
 .stage p { font-size: 0.93rem; color: var(--muted); margin: 0 0 16px; }
@@ -247,7 +254,7 @@ textarea { min-height: 150px; resize: vertical; }
 
 /* Values / stats */
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.stat { background: var(--white); border-radius: var(--radius); padding: 30px; text-align: center; border: 1px solid rgba(59,42,22,.06); }
+.stat { background: var(--white); border-radius: var(--radius); padding: 30px; text-align: center; border: 1px solid rgba(59,42,22,.06); display: flex; flex-direction: column; justify-content: center; }
 .stat strong { display: block; font-family: var(--font-serif); font-size: 2.6rem; color: var(--gold-deep); line-height: 1; margin-bottom: 8px; }
 .stat span { color: var(--muted); font-size: 0.95rem; }
 
@@ -320,4 +327,179 @@ textarea { min-height: 150px; resize: vertical; }
   .trust .wrap { grid-template-columns: 1fr; }
   .trust .item { border-left: 0 !important; }
   .trust .item + .item { border-top: 1px solid rgba(59,42,22,.1); }
+}
+
+/* ---- Phoenix Program additions ---- */
+.hero-sunrise { color: var(--white); }
+.hero-sunrise .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; z-index: 0; }
+.hero-sunrise::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(42,33,24,.8) 0%, rgba(42,33,24,.55) 55%, rgba(42,33,24,.22) 100%); }
+.hero-sunrise .hero-grid { position: relative; z-index: 2; }
+.hero-sunrise h1 { color: var(--white); font-size: clamp(3rem, 6.4vw, 5.4rem); }
+.hero-sunrise h1 span { color: var(--gold); }
+.hero-sunrise .eyebrow { color: var(--gold); }
+.hero-sunrise .lead { color: #f3ebdd; font-family: var(--font-serif); font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 500; }
+.hero-sunrise .tagline { color: #e6dbc8; max-width: 560px; }
+.btn-outline.light { border-color: #f3ebdd; color: #f3ebdd; }
+.btn-outline.light:hover { background: #f3ebdd; color: var(--brown); }
+.hero-sunrise .hero-media .badge strong { color: var(--brown); }
+
+.closing { position: relative; overflow: hidden; background: var(--brown); color: #efe6d8; padding: clamp(72px, 10vw, 130px) 0; }
+.closing .bg-photo { opacity: .35; }
+.closing .wrap { position: relative; }
+.closing h2 { color: var(--white); font-style: italic; font-weight: 500; font-size: clamp(2rem, 4vw, 3.2rem); }
+.closing p { color: #e3d8c7; font-size: 1.1rem; }
+.closing .eyebrow { color: var(--gold); }
+.closing .btn-outline { border-color: #efe6d8; color: #efe6d8; }
+.closing .btn-outline:hover { background: #efe6d8; color: var(--brown); }
+
+.site-footer .powered { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+.powered-inline { font-size: .85rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-deep); font-weight: 700; }
+
+.cards.manifesto { grid-template-columns: repeat(2, 1fr); }
+.cards.manifesto .card h3 { font-size: 1.6rem; }
+.stages.flow { grid-template-columns: repeat(4, 1fr); }
+.stages.flow .stage .btn { margin-top: auto; align-self: flex-start; padding: 11px 20px; font-size: .9rem; }
+.stages.flow .stage p { margin-bottom: 18px; }
+
+.step h3 .tag { font-family: var(--font-sans); font-size: .8rem; color: var(--gold-deep); letter-spacing: .1em; text-transform: uppercase; margin-left: 10px; }
+
+.label-text { display: block; font-weight: 700; font-size: 0.88rem; color: var(--brown); margin-bottom: 10px; }
+.choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; }
+.choice-grid .checkbox { align-items: flex-start; }
+.choice-grid .checkbox input { margin-top: 4px; }
+.choice-grid.days { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+
+@media (max-width: 1024px) {
+  .stages.flow { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 820px) {
+  .cards.manifesto, .stages.flow { grid-template-columns: 1fr; }
+  .hero-sunrise::before { background: linear-gradient(180deg, rgba(42,33,24,.82) 0%, rgba(42,33,24,.7) 100%); }
+  .choice-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Intake additions ---- */
+.form-section { border-top: 1px solid rgba(59,42,22,.12); padding-top: 22px; margin-top: 6px; }
+.form-section h3 { font-size: 1.35rem; margin-bottom: 4px; }
+.label-text em { font-style: normal; font-weight: 500; color: var(--muted); }
+.choice-grid.three { grid-template-columns: repeat(2, 1fr); }
+.radio-list { display: grid; gap: 10px; }
+.radio-list .checkbox { align-items: flex-start; }
+.radio-list .checkbox input { margin-top: 5px; }
+.other-field { margin-top: 12px; }
+.other-field[hidden] { display: none; }
+.insurance-box { margin-top: 36px; background: var(--white); border-radius: var(--radius); padding: 26px 28px; border: 1px solid rgba(59,42,22,.06); }
+.insurance-box p { color: var(--muted); font-size: .95rem; }
+.check-list.compact { grid-template-columns: 1fr 1fr; gap: 8px 16px; margin-top: 10px; }
+.check-list.compact li { font-size: .95rem; }
+@media (max-width: 1024px) { .choice-grid.three { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 820px) { .choice-grid.three, .check-list.compact { grid-template-columns: 1fr; } }
+
+/* =====================================================================
+   DESIGN REFRESH v2 : Sanzo Wada palette, reduced dividers, sector standards
+   Palette refs: Dictionary of Color Combinations (Wada Sanzo)
+   #192 Cream Yellow + Vandyke Brown + Deep Violet/Plumbeous
+   #296 Ochraceous Salmon + Pale Raw Umber + Slate
+   ===================================================================== */
+:root{
+  --slate:#51697f;         /* Plumbeous, calming blue (healthcare-standard) */
+  --slate-deep:#3b4f62;
+  --slate-soft:#eef1f4;
+  --slate-tint:#dde4ea;
+  --terracotta:#c67f56;    /* Ochraceous Salmon, warm accent */
+  --terracotta-deep:#a9663f;
+  --terracotta-soft:#f5e5d9;
+  --gold-soft:#fbeccb;
+}
+
+/* --- Lighter header, fewer hard lines --- */
+.site-header{ border-bottom:0; box-shadow:0 1px 0 rgba(59,42,22,.05); }
+
+/* --- Accessibility: skip link --- */
+.skip-link{ position:absolute; left:-9999px; top:0; z-index:200; background:var(--brown); color:#fff;
+  padding:12px 20px; border-radius:0 0 12px 0; font-weight:700; text-decoration:none; }
+.skip-link:focus{ left:0; }
+:focus-visible{ outline:3px solid var(--slate); outline-offset:2px; }
+
+/* --- Crisis / immediate-help bar --- */
+.help-bar{ background:var(--slate-deep); color:#eef2f6; font-size:.86rem;
+  padding-top:env(safe-area-inset-top,0px); }
+.help-bar .wrap{ display:flex; align-items:center; justify-content:center; gap:6px 22px;
+  flex-wrap:wrap; padding:9px 0; text-align:center; }
+.help-bar strong{ color:#fff; font-weight:700; }
+.help-bar a{ color:#fff; text-decoration:none; font-weight:700; border-bottom:1px solid rgba(255,255,255,.45); }
+.help-bar a:hover{ border-color:#fff; }
+.help-bar .sep{ opacity:.45; }
+@media (max-width:640px){ .help-bar .sep{ display:none; } .help-bar .wrap{ gap:2px 14px; font-size:.82rem; } }
+
+/* --- Trust strip: remove dividers, calm spaced columns --- */
+.trust{ border:0; background:var(--cream-2); }
+.trust .wrap{ gap:10px; padding:10px 0; }
+.trust .item, .trust .item + .item{ border:0 !important; }
+.trust strong{ color:var(--brown); }
+
+/* --- Multi-hue icon tiles (Sanzo rotation across cards) --- */
+.cards .card:nth-child(3n+2) .icon{ background:rgba(81,105,127,.14); }
+.cards .card:nth-child(3n+2) .icon svg{ stroke:var(--slate-deep); }
+.cards .card:nth-child(3n+3) .icon{ background:rgba(198,127,86,.16); }
+.cards .card:nth-child(3n+3) .icon svg{ stroke:var(--terracotta-deep); }
+.cards.manifesto .card:nth-child(2n) .icon{ background:rgba(81,105,127,.14); }
+.cards.manifesto .card:nth-child(2n) .icon svg{ stroke:var(--slate-deep); }
+
+/* --- Slate (calming) section variant --- */
+.section.slate{ background:var(--slate-soft); }
+.section.slate .eyebrow{ color:var(--slate-deep); }
+.section.slate .stage .num{ color:var(--terracotta-deep); }
+
+/* --- Timeline: cards instead of divider lines --- */
+.timeline{ gap:14px; margin-top:28px; }
+.step{ border:0 !important; background:var(--white); border-radius:var(--radius);
+  padding:24px 28px; grid-template-columns:72px 1fr; align-items:start; }
+.step:last-child{ border:0 !important; }
+.step .n{ font-size:2.2rem; color:var(--terracotta-deep); }
+.section.slate .step{ background:#fff; }
+
+/* --- FAQ: soft cards, no rule lines --- */
+.faq details{ border:0; background:var(--white); border-radius:var(--radius-sm);
+  padding:6px 26px; margin-bottom:12px; box-shadow:0 1px 2px rgba(59,42,22,.04); }
+.faq details:last-child{ border:0; }
+.faq summary{ padding:20px 0; font-size:1.3rem; }
+.faq details[open]{ box-shadow:var(--shadow); }
+
+/* --- Buttons: add calming slate secondary --- */
+.btn-slate{ background:var(--slate); color:#fff; }
+.btn-slate:hover{ background:var(--slate-deep); }
+.cta-band .btn-outline{ border-color:var(--brown); color:var(--brown); }
+
+/* --- Form focus in slate for a clinical-calm feel; form sections lose divider --- */
+input:focus, select:focus, textarea:focus{ border-color:var(--slate);
+  box-shadow:0 0 0 4px rgba(81,105,127,.16); background:var(--white); }
+.form-section{ border:0; padding-top:10px; margin-top:14px; }
+.form-reassure{ display:flex; gap:12px; align-items:flex-start; background:var(--slate-soft);
+  border-radius:14px; padding:16px 18px; margin:0 0 22px; font-size:.92rem; color:var(--slate-deep); }
+.form-reassure svg{ flex:0 0 22px; width:22px; height:22px; stroke:var(--slate-deep); margin-top:1px; }
+.insurance-box{ background:var(--slate-soft); border:0; }
+.insurance-box .eyebrow{ color:var(--slate-deep); }
+
+/* --- Footer: resources + legal, minimal dividing lines --- */
+.footer-grid{ grid-template-columns:1.5fr 1fr 1fr 1.2fr 1.4fr; }
+.footer-help ul{ gap:12px; }
+.footer-help li{ font-size:.9rem; color:#c8bba6; line-height:1.45; }
+.footer-help a{ color:#fff; font-weight:700; border-bottom:1px solid rgba(255,255,255,.35); }
+.footer-help a:hover{ color:var(--gold); }
+.footer-legal{ margin-top:48px; display:grid; grid-template-columns:1.1fr 1fr; gap:28px 48px; align-items:start; }
+.footer-legal .eho{ display:flex; gap:14px; align-items:flex-start; }
+.footer-legal .eho svg{ flex:0 0 40px; width:40px; height:40px; stroke:#d9cdb9; }
+.footer-legal p{ font-size:.85rem; color:#b7a891; margin:0; line-height:1.5; }
+.footer-legal strong{ color:#efe6d8; }
+.footer-bottom{ margin-top:36px; padding-top:22px; border-top:1px solid rgba(255,255,255,.1); }
+.footer-bottom a{ border-bottom:1px solid rgba(255,255,255,.2); text-decoration:none; }
+
+@media (max-width:1024px){
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+  .footer-legal{ grid-template-columns:1fr; }
+}
+@media (max-width:820px){
+  .footer-grid{ grid-template-columns:1fr; }
+  .step{ grid-template-columns:52px 1fr; gap:14px; padding:20px 22px; }
 }
